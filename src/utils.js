@@ -2,6 +2,11 @@ import defaults from './options'
 
 function format (input, opt = defaults) {
   if (typeof input === 'number') {
+    if (input > opt.max) {
+        input = opt.max
+    } else if (input < opt.min) {
+        input = opt.min
+    }
     input = input.toFixed(fixed(opt.precision))
   }
   var negative = input.indexOf('-') >= 0 ? '-' : ''

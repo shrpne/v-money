@@ -35,6 +35,14 @@ export default {
       type: String,
       default: () => defaults.thousands
     },
+    max: {
+      type: Number,
+      default: () => defaults.max
+    },
+    min: {
+      type: Number,
+      default: () => defaults.min
+    },
     prefix: {
       type: String,
       default: () => defaults.prefix
