@@ -51,8 +51,8 @@ Vue.use(money, {precision: 4})
           suffix: ' #',
           precision: 2,
           masked: false,
-          min: -1000000000,
-          max: 1000000000,
+          min: Number.MIN_SAFE_INTEGER,
+          max: Number.MAX_SAFE_INTEGER
         }
       }
     }
@@ -83,8 +83,8 @@ Must use `vmodel.lazy` to bind works properly.
           suffix: ' #',
           precision: 2,
           masked: false /* doesn't work with directive */,
-          min: -1000000000,
-          max: 1000000000
+          min: Number.MIN_SAFE_INTEGER,
+          max: Number.MAX_SAFE_INTEGER
         }
       }
     },
@@ -96,17 +96,17 @@ Must use `vmodel.lazy` to bind works properly.
 
 ## Properties
 
-| property  | Required | Type    | Default     | Description                                             |
-|-----------|----------|---------|-------------|---------------------------------------------------------|
-| precision | **true** | Number  | 2           | How many decimal places                                 |
-| precision | **true** | Number  | 2           | How many decimal places                                 |
-| decimal   | false    | String  | "."         | Decimal separator                                       |
-| thousands | false    | String  | ","         | Thousands separator                                     |
-| prefix    | false    | String  | ""          | Currency symbol followed by a Space, like "R$ "         |
-| suffix    | false    | String  | ""          | Percentage for example: " %"                            |
-| masked    | false    | Boolean | false       | If the component output should include the mask or not  |
-| min       | false    | Number  | -1000000000 | The min value allowed                                   |
-| max       | false    | Number  | 1000000000  | The max value allowed                                   |
+| property  | Required | Type    | Default                 | Description                                             |
+|-----------|----------|---------|-------------------------|---------------------------------------------------------|
+| precision | **true** | Number  | 2                       | How many decimal places                                 |
+| precision | **true** | Number  | 2                       | How many decimal places                                 |
+| decimal   | false    | String  | "."                     | Decimal separator                                       |
+| thousands | false    | String  | ","                     | Thousands separator                                     |
+| prefix    | false    | String  | ""                      | Currency symbol followed by a Space, like "R$ "         |
+| suffix    | false    | String  | ""                      | Percentage for example: " %"                            |
+| masked    | false    | Boolean | false                   | If the component output should include the mask or not  |
+| min       | false    | Number  | Number.MIN_SAFE_INTEGER | The min value allowed                                   |
+| max       | false    | Number  | Number.MAX_SAFE_INTEGER | The max value allowed                                   |
 
 ### References
 

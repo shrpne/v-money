@@ -4,6 +4,6 @@ export default {
   thousands: ',',
   decimal: '.',
   precision: 2,
-  min: -1000000000,
-  max: 1000000000
+  min: Number.MIN_SAFE_INTEGER,
+  max: Number.MAX_SAFE_INTEGER
 }
