@@ -2,7 +2,7 @@
   <input type="tel"
          :value="formattedValue"
          @change="change"
-         v-money="{precision, decimal, thousands, prefix, suffix}"
+         v-money="{precision, decimal, thousands, prefix, suffix, min, max}"
          class="v-money" />
 </template>
 
