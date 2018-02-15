@@ -1,4 +1,4 @@
-import {format, setCursor, event} from './utils'
+import {format, unformat, setCursor, event} from './utils'
 import assign from './assign'
 import defaults from './options'
 
@@ -13,6 +13,15 @@ export default function (el, binding) {
       // throw new Error("v-money requires 1 input, found " + els.length)
     } else {
       el = els[0]
+    }
+  }
+
+  el.onkeydown = function (e) {
+    var backspacePressed = e.which == 8 || e.which == 46
+    var atEndPosition = (el.value.length - el.selectionEnd) === 0
+    if (opt.allowBlank && backspacePressed && atEndPosition && (unformat(el.value, 0) === 0)) {
+      el.value = ''
+      el.dispatchEvent(event('change')) // v-model.lazy
     }
   }
 
