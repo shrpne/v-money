@@ -1,6 +1,10 @@
 import defaults from './options'
 
 function format (input, opt = defaults) {
+  if (opt.allowBlank && input == '') {
+    return ''
+  }
+
   if (typeof input === 'number') {
     if (input > opt.max) {
         input = opt.max
