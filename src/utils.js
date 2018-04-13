@@ -1,8 +1,12 @@
 import defaults from './options'
 
 function format (input, opt = defaults) {
-  if (opt.allowBlank && input == '') {
+  if (opt.allowBlank && input === '') {
     return ''
+  }
+
+  if (input) {
+    input = unformat(input, opt.precision);
   }
 
   if (typeof input === 'number') {
