@@ -78,11 +78,16 @@ function setCursor (el, position) {
   }
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#The_old-fashioned_way
-function event (name) {
-  var evt = document.createEvent('Event')
-  evt.initEvent(name, true, true)
-  return evt
+// https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
+function event (name, params) {
+  if ( typeof CustomEvent === 'function' ) {
+    return new CustomEvent(name, params)
+  } else {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    let evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( name, params.bubbles, params.cancelable, params.detail );
+    return evt;
+  }
 }
 
 export {

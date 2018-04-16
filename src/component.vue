@@ -1,7 +1,7 @@
 <template lang="html">
   <input type="tel"
          :value="formattedValue"
-         @change="change"
+         @accept="accept"
          v-money="{precision, decimal, thousands, prefix, suffix, min, max}"
          class="v-money" />
 </template>
@@ -9,7 +9,7 @@
 <script>
 import money from './directive'
 import defaults from './options'
-import {format, unformat} from './utils'
+import {format} from './utils'
 
 export default {
   name: 'Money',
@@ -74,8 +74,8 @@ export default {
   },
 
   methods: {
-    change (evt) {
-      this.$emit('input', this.masked ? evt.target.value : unformat(evt.target.value, this.precision))
+    accept (evt) {
+      this.$emit('input', this.masked ? evt.target.value : evt.detail.unmaskedValue)
     }
   }
 }
